@@ -1,208 +1,280 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WZK Store</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #0b1a3a, #020617);
-    color: white;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#05070d;
+  color:#fff;
 }
 
 /* HEADER */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px;
-    padding: 10px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #0a1a3f, #020817);
-    border: 1px solid #1a2a6b;
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+  background:#0a0f1f;
+  border-bottom:1px solid #0f1c3d;
 }
 
-.menu-btn, .icon-btn {
-    background: #0f1c45;
-    padding: 12px;
-    border-radius: 50%;
-    border: 1px solid #1a2a6b;
+.logo{
+  font-weight:bold;
+  font-size:20px;
+  color:#3ba3ff;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #00aaff;
+.icon{
+  background:#0f1c3d;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
 /* BANNER */
-.banner {
-    margin: 15px;
-    border-radius: 20px;
-    overflow: hidden;
-    background: linear-gradient(90deg, #001d4d, #003a8c);
-    padding: 25px;
+.banner{
+  margin:15px;
+  padding:20px;
+  background:linear-gradient(90deg,#0a1f40,#000);
+  border-radius:15px;
+  text-align:center;
+  font-size:22px;
 }
 
-.banner h1 {
-    margin: 0;
-    font-size: 26px;
+/* CATEGORIA */
+.box{
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
+  background:#0a0f1f;
+  border:1px solid #0f1c3d;
 }
 
-.banner span {
-    font-size: 13px;
-    opacity: 0.7;
-}
-
-/* CATEGORIA BOX */
-.category-box {
-    margin: 15px;
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #0a1a3f, #020817);
-    border: 1px solid #1a2a6b;
-}
-
-.category-select {
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 10px;
-    background: #0f1c45;
-    border: 1px solid #1a2a6b;
-}
-
-/* FILTROS */
-.filters {
-    display: flex;
-    gap: 10px;
-    margin: 15px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background: #0f1c45;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #1a2a6b;
+select{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
+  border:none;
 }
 
 /* PRODUTOS */
-.products {
-    padding: 15px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:15px;
 }
 
-.card {
-    background: linear-gradient(145deg, #0d1f4f, #020817);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid #1a2a6b;
+.card{
+  background:#0a0f1f;
+  border-radius:15px;
+  padding:10px;
 }
 
-.card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 10px;
-}
-
-.card-title {
-    font-weight: bold;
-}
-
-.card-price {
-    color: #00ffcc;
-}
-
-.buy-btn {
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
+.card button{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#1e6cff;
+  color:#fff;
+  margin-top:10px;
 }
 
 /* WHATSAPP */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    padding: 15px;
-    border-radius: 50%;
-    text-decoration: none;
-    color: white;
-    font-size: 22px;
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
 }
+
+/* MENU */
+.menu{
+  position:fixed;
+  left:-100%;
+  top:0;
+  width:70%;
+  height:100%;
+  background:#0a0f1f;
+  padding:20px;
+  transition:0.3s;
+}
+
+.menu.active{
+  left:0;
+}
+
+.menu button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  background:#1e6cff;
+  color:#fff;
+}
+
+/* CONTA POPUP */
+.conta{
+  position:fixed;
+  top:70px;
+  right:10px;
+  background:#0a0f1f;
+  padding:15px;
+  border-radius:15px;
+  display:none;
+}
+
+.conta button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#1e6cff;
+}
+
+/* CARRINHO */
+.carrinho{
+  position:fixed;
+  right:-100%;
+  top:0;
+  width:100%;
+  height:100%;
+  background:#05070d;
+  padding:20px;
+  transition:0.3s;
+}
+
+.carrinho.active{
+  right:0;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-    <div class="menu-btn">☰</div>
-    <div class="logo">WZK</div>
-    <div style="display:flex; gap:10px;">
-        <div class="icon-btn">👤</div>
-        <div class="icon-btn">🛒</div>
-    </div>
+  <div class="icon" onclick="abrirMenu()">☰</div>
+  <div class="logo">WZK</div>
+  <div>
+    <span class="icon" onclick="abrirConta()">👤</span>
+    <span class="icon" onclick="abrirCarrinho()">🛒</span>
+  </div>
 </div>
 
+<!-- BANNER -->
 <div class="banner">
-    <h1>ASSINATURAS</h1>
-    <span>VEJA NOSSO CATÁLOGO DE PRODUTOS</span>
+  ASSINATURAS 🔥
 </div>
 
-<div class="category-box">
-    <strong>Navegar por categoria</strong>
-    <div>Selecionada: 🎬 Assinaturas</div>
-
-    <div class="category-select">🎬 Assinaturas ▼</div>
+<!-- CATEGORIA -->
+<div class="box">
+  <h3>Navegar por categoria</h3>
+  <select>
+    <option>Assinaturas</option>
+  </select>
 </div>
 
-<div class="filters">
-    <div class="filter-btn">Preço: Menor</div>
-    <div class="filter-btn">Preço: Maior</div>
-    <div class="filter-btn">A-Z</div>
-    <div class="filter-btn">Z-A</div>
+<!-- PRODUTOS -->
+<div class="grid">
+  <div class="card">
+    <h4>Netflix</h4>
+    <p>R$ 19,90</p>
+    <button onclick="addCarrinho('Netflix')">Comprar</button>
+  </div>
+
+  <div class="card">
+    <h4>Prime Video</h4>
+    <p>R$ 14,90</p>
+    <button onclick="addCarrinho('Prime Video')">Comprar</button>
+  </div>
 </div>
 
-<div class="products">
+<!-- WHATSAPP -->
+<div class="whatsapp" onclick="whats()">💬</div>
 
-    <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png">
-        <div class="card-content">
-            <div class="card-title">Prime Video</div>
-            <div class="card-price">R$ 10,00</div>
-            <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20Prime%20Video">Comprar</a>
-        </div>
-    </div>
+<!-- MENU -->
+<div class="menu" id="menu">
+  <h2>MENU</h2>
+  <p>Suporte: Online 24/7</p>
 
-    <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png">
-        <div class="card-content">
-            <div class="card-title">Crunchyroll</div>
-            <div class="card-price">R$ 12,00</div>
-            <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20Crunchyroll">Comprar</a>
-        </div>
-    </div>
+  <h3>Categorias</h3>
+  <p>🎬 Assinaturas</p>
 
+  <button onclick="abrirCarrinho()">Ver Carrinho</button>
 </div>
 
-<a class="whatsapp" href="https://wa.me/5519999650414?text=Quero%20comprar%20na%20WZK">
-💬
-</a>
+<!-- CONTA -->
+<div class="conta" id="conta">
+  <h3>Samuel</h3>
+  <p>seuemail@gmail.com</p>
+
+  <button onclick="alert('Pedidos')">Meus pedidos</button>
+  <button onclick="alert('Logout')">Sair da conta</button>
+</div>
+
+<!-- CARRINHO -->
+<div class="carrinho" id="carrinho">
+  <h2>Seu carrinho</h2>
+  <div id="lista"></div>
+</div>
+
+<script>
+
+let carrinho = []
+
+function abrirMenu(){
+  document.getElementById('menu').classList.toggle('active')
+}
+
+function abrirConta(){
+  let c = document.getElementById('conta')
+  c.style.display = c.style.display == 'block' ? 'none' : 'block'
+}
+
+function abrirCarrinho(){
+  document.getElementById('carrinho').classList.toggle('active')
+}
+
+function addCarrinho(prod){
+  carrinho.push(prod)
+  renderCarrinho()
+}
+
+function renderCarrinho(){
+  let lista = document.getElementById('lista')
+  lista.innerHTML = ""
+
+  carrinho.forEach(p=>{
+    lista.innerHTML += `<p>${p}</p>`
+  })
+}
+
+function whats(){
+  window.open("https://wa.me/5519999650414")
+}
+
+</script>
 
 </body>
 </html>
