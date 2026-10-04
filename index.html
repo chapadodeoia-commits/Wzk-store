@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(180deg, #020617, #050b2c);
+    background: radial-gradient(circle at top, #0b1a3a, #020617);
     color: white;
 }
 
@@ -18,130 +18,119 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    background: rgba(10,15,40,0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #1f2a6b;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0a1a3f, #020817);
+    border: 1px solid #1a2a6b;
+}
+
+.menu-btn, .icon-btn {
+    background: #0f1c45;
+    padding: 12px;
+    border-radius: 50%;
+    border: 1px solid #1a2a6b;
 }
 
 .logo {
+    font-size: 22px;
     font-weight: bold;
-    font-size: 20px;
     color: #00aaff;
-}
-
-.icons {
-    display: flex;
-    gap: 10px;
-}
-
-.icon-btn {
-    background: #0f163f;
-    border-radius: 50%;
-    padding: 12px;
-    border: 1px solid #1f2a6b;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.icon-btn:hover {
-    background: #1a2a6b;
 }
 
 /* BANNER */
 .banner {
     margin: 15px;
-    padding: 30px;
     border-radius: 20px;
+    overflow: hidden;
     background: linear-gradient(90deg, #001d4d, #003a8c);
-    text-align: center;
-    box-shadow: 0 0 25px rgba(0,170,255,0.2);
+    padding: 25px;
 }
 
 .banner h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 26px;
 }
 
-.banner p {
-    opacity: 0.8;
+.banner span {
+    font-size: 13px;
+    opacity: 0.7;
 }
 
-/* CATEGORIA */
-.box {
+/* CATEGORIA BOX */
+.category-box {
     margin: 15px;
     padding: 20px;
-    border-radius: 15px;
-    background: #0a0f2f;
-    border: 1px solid #1a2a5f;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0a1a3f, #020817);
+    border: 1px solid #1a2a6b;
+}
+
+.category-select {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #0f1c45;
+    border: 1px solid #1a2a6b;
 }
 
 /* FILTROS */
 .filters {
     display: flex;
     gap: 10px;
-    padding: 0 15px;
+    margin: 15px;
     flex-wrap: wrap;
 }
 
 .filter-btn {
-    background: #0f163f;
+    background: #0f1c45;
     padding: 10px 15px;
     border-radius: 10px;
-    border: 1px solid #1f2a6b;
-    cursor: pointer;
+    border: 1px solid #1a2a6b;
 }
 
 /* PRODUTOS */
 .products {
+    padding: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    padding: 15px;
 }
 
 .card {
-    background: linear-gradient(180deg, #0d1235, #050b2c);
+    background: linear-gradient(145deg, #0d1f4f, #020817);
     border-radius: 20px;
-    padding: 15px;
-    border: 1px solid #1a2a5f;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.03);
-    border-color: #00aaff;
+    overflow: hidden;
+    border: 1px solid #1a2a6b;
 }
 
 .card img {
     width: 100%;
-    border-radius: 15px;
+    height: 120px;
+    object-fit: cover;
 }
 
-.card h3 {
-    margin: 10px 0 5px;
+.card-content {
+    padding: 10px;
 }
 
-.price {
-    color: #00ffcc;
+.card-title {
     font-weight: bold;
 }
 
-/* BOTÃO */
+.card-price {
+    color: #00ffcc;
+}
+
 .buy-btn {
     display: block;
     margin-top: 10px;
     text-align: center;
-    background: #00aaff;
     padding: 10px;
     border-radius: 10px;
+    background: #007bff;
     color: white;
     text-decoration: none;
-    transition: 0.3s;
-}
-
-.buy-btn:hover {
-    background: #0088cc;
 }
 
 /* WHATSAPP */
@@ -150,12 +139,11 @@ body {
     bottom: 20px;
     right: 20px;
     background: #25D366;
-    padding: 16px;
+    padding: 15px;
     border-radius: 50%;
-    font-size: 22px;
     text-decoration: none;
     color: white;
-    box-shadow: 0 0 15px #25D366;
+    font-size: 22px;
 }
 </style>
 </head>
@@ -163,10 +151,9 @@ body {
 <body>
 
 <div class="header">
+    <div class="menu-btn">☰</div>
     <div class="logo">WZK</div>
-
-    <div class="icons">
-        <div class="icon-btn">☰</div>
+    <div style="display:flex; gap:10px;">
         <div class="icon-btn">👤</div>
         <div class="icon-btn">🛒</div>
     </div>
@@ -174,17 +161,19 @@ body {
 
 <div class="banner">
     <h1>ASSINATURAS</h1>
-    <p>Veja nosso catálogo de produtos</p>
+    <span>VEJA NOSSO CATÁLOGO DE PRODUTOS</span>
 </div>
 
-<div class="box">
-    <h2>Categorias</h2>
-    <p>Assinaturas</p>
+<div class="category-box">
+    <strong>Navegar por categoria</strong>
+    <div>Selecionada: 🎬 Assinaturas</div>
+
+    <div class="category-select">🎬 Assinaturas ▼</div>
 </div>
 
 <div class="filters">
-    <div class="filter-btn">Preço ↓</div>
-    <div class="filter-btn">Preço ↑</div>
+    <div class="filter-btn">Preço: Menor</div>
+    <div class="filter-btn">Preço: Maior</div>
     <div class="filter-btn">A-Z</div>
     <div class="filter-btn">Z-A</div>
 </div>
@@ -193,22 +182,25 @@ body {
 
     <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png">
-        <h3>Prime Video</h3>
-        <div class="price">R$ 10,00</div>
-        <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20comprar%20Prime%20Video">Comprar</a>
+        <div class="card-content">
+            <div class="card-title">Prime Video</div>
+            <div class="card-price">R$ 10,00</div>
+            <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20Prime%20Video">Comprar</a>
+        </div>
     </div>
 
     <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png">
-        <h3>Crunchyroll</h3>
-        <div class="price">R$ 12,00</div>
-        <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20comprar%20Crunchyroll">Comprar</a>
+        <div class="card-content">
+            <div class="card-title">Crunchyroll</div>
+            <div class="card-price">R$ 12,00</div>
+            <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20Crunchyroll">Comprar</a>
+        </div>
     </div>
 
 </div>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/5519999650414?text=Quero%20comprar%20na%20WZK%20Store">
+<a class="whatsapp" href="https://wa.me/5519999650414?text=Quero%20comprar%20na%20WZK">
 💬
 </a>
 
