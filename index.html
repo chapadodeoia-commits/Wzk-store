@@ -1,116 +1,216 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>WZK Store</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0a0f2c;
-      color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WZK Store</title>
 
-    header {
-      background: #0d1b4c;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #020617, #050b2c);
+    color: white;
+}
 
-    header h1 {
-      color: #00aaff;
-    }
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(10,15,40,0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1f2a6b;
+}
 
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #00aaff;
+}
 
-    .banner {
-      background: linear-gradient(90deg, #001f3f, #0074D9);
-      padding: 40px;
-      text-align: center;
-    }
+.icons {
+    display: flex;
+    gap: 10px;
+}
 
-    .banner h2 {
-      font-size: 30px;
-    }
+.icon-btn {
+    background: #0f163f;
+    border-radius: 50%;
+    padding: 12px;
+    border: 1px solid #1f2a6b;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    .produtos {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-    }
+.icon-btn:hover {
+    background: #1a2a6b;
+}
 
-    .card {
-      background: #111a3a;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-    }
+/* BANNER */
+.banner {
+    margin: 15px;
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #001d4d, #003a8c);
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,170,255,0.2);
+}
 
-    .card button {
-      background: #0074D9;
-      border: none;
-      padding: 10px;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+.banner h1 {
+    margin: 0;
+    font-size: 28px;
+}
 
-    footer {
-      background: #0d1b4c;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-    }
-  </style>
+.banner p {
+    opacity: 0.8;
+}
+
+/* CATEGORIA */
+.box {
+    margin: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #0a0f2f;
+    border: 1px solid #1a2a5f;
+}
+
+/* FILTROS */
+.filters {
+    display: flex;
+    gap: 10px;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #0f163f;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #1f2a6b;
+    cursor: pointer;
+}
+
+/* PRODUTOS */
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+}
+
+.card {
+    background: linear-gradient(180deg, #0d1235, #050b2c);
+    border-radius: 20px;
+    padding: 15px;
+    border: 1px solid #1a2a5f;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    border-color: #00aaff;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+}
+
+.price {
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+/* BOTÃO */
+.buy-btn {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    background: #00aaff;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #0088cc;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    padding: 16px;
+    border-radius: 50%;
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 0 15px #25D366;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>WZK Store</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Produtos</a>
-    <a href="#">Carrinho</a>
-    <a href="#">Login</a>
-  </nav>
-</header>
+<div class="header">
+    <div class="logo">WZK</div>
 
-<div class="banner">
-  <h2>Bem-vindo à WZK Store 🚀</h2>
-  <p>Os melhores produtos com estilo</p>
+    <div class="icons">
+        <div class="icon-btn">☰</div>
+        <div class="icon-btn">👤</div>
+        <div class="icon-btn">🛒</div>
+    </div>
 </div>
 
-<section class="produtos">
-  <div class="card">
-    <h3>Produto 1</h3>
-    <p>R$ 99,99</p>
-    <button>Comprar</button>
-  </div>
+<div class="banner">
+    <h1>ASSINATURAS</h1>
+    <p>Veja nosso catálogo de produtos</p>
+</div>
 
-  <div class="card">
-    <h3>Produto 2</h3>
-    <p>R$ 149,99</p>
-    <button>Comprar</button>
-  </div>
+<div class="box">
+    <h2>Categorias</h2>
+    <p>Assinaturas</p>
+</div>
 
-  <div class="card">
-    <h3>Produto 3</h3>
-    <p>R$ 79,99</p>
-    <button>Comprar</button>
-  </div>
-</section>
+<div class="filters">
+    <div class="filter-btn">Preço ↓</div>
+    <div class="filter-btn">Preço ↑</div>
+    <div class="filter-btn">A-Z</div>
+    <div class="filter-btn">Z-A</div>
+</div>
 
-<footer>
-  <p>© 2026 WZK Store</p>
-</footer>
+<div class="products">
+
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png">
+        <h3>Prime Video</h3>
+        <div class="price">R$ 10,00</div>
+        <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20comprar%20Prime%20Video">Comprar</a>
+    </div>
+
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png">
+        <h3>Crunchyroll</h3>
+        <div class="price">R$ 12,00</div>
+        <a class="buy-btn" href="https://wa.me/5519999650414?text=Quero%20comprar%20Crunchyroll">Comprar</a>
+    </div>
+
+</div>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/5519999650414?text=Quero%20comprar%20na%20WZK%20Store">
+💬
+</a>
 
 </body>
 </html>
