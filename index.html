@@ -5,275 +5,208 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WZK Store</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, sans-serif;
-}
-
 body{
-  background:#05070d;
-  color:#fff;
+  margin:0;
+  font-family:Arial;
+  background:#020617;
+  color:white;
 }
 
-/* HEADER */
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px;
-  background:#0a0f1f;
-  border-bottom:1px solid #0f1c3d;
-}
-
-.logo{
-  font-weight:bold;
-  font-size:20px;
-  color:#3ba3ff;
-}
-
-.icon{
-  background:#0f1c3d;
-  padding:10px;
-  border-radius:50%;
-  cursor:pointer;
-}
-
-/* BANNER */
-.banner{
-  margin:15px;
-  padding:20px;
-  background:linear-gradient(90deg,#0a1f40,#000);
-  border-radius:15px;
-  text-align:center;
-  font-size:22px;
-}
-
-/* CATEGORIA */
-.box{
-  margin:15px;
-  padding:15px;
-  border-radius:15px;
-  background:#0a0f1f;
-  border:1px solid #0f1c3d;
-}
-
-select{
-  width:100%;
-  padding:10px;
-  border-radius:10px;
-  background:#000;
-  color:#fff;
-  border:none;
-}
-
-/* PRODUTOS */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  padding:15px;
-}
-
-.card{
-  background:#0a0f1f;
-  border-radius:15px;
-  padding:10px;
-}
-
-.card button{
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:10px;
-  background:#1e6cff;
-  color:#fff;
-  margin-top:10px;
-}
-
-/* WHATSAPP */
-.whatsapp{
+/* BOTÃO SUPORTE */
+.support-btn{
   position:fixed;
   bottom:20px;
   right:20px;
-  background:#25d366;
-  padding:15px;
+  width:60px;
+  height:60px;
+  background:linear-gradient(135deg,#2563eb,#3b82f6);
   border-radius:50%;
-  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
   cursor:pointer;
+  box-shadow:0 0 20px #2563eb;
 }
 
-/* MENU */
-.menu{
+/* CHAT */
+.chat{
   position:fixed;
-  left:-100%;
-  top:0;
-  width:70%;
-  height:100%;
-  background:#0a0f1f;
-  padding:20px;
+  bottom:-100%;
+  right:0;
+  width:100%;
+  height:80%;
+  background:#020617;
+  border-top-left-radius:20px;
+  border-top-right-radius:20px;
   transition:0.3s;
 }
 
-.menu.active{
-  left:0;
+.chat.active{
+  bottom:0;
 }
 
-.menu button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border:none;
-  border-radius:10px;
-  background:#1e6cff;
-  color:#fff;
-}
-
-/* CONTA POPUP */
-.conta{
-  position:fixed;
-  top:70px;
-  right:10px;
-  background:#0a0f1f;
+/* HEADER CHAT */
+.chat-header{
+  background:#0f172a;
   padding:15px;
-  border-radius:15px;
-  display:none;
+  display:flex;
+  justify-content:space-between;
 }
 
-.conta button{
-  width:100%;
-  margin-top:10px;
+.chat-body{
+  height:60%;
+  overflow-y:auto;
+  padding:10px;
+}
+
+/* MENSAGEM */
+.msg{
+  padding:10px;
+  margin:5px;
+  border-radius:10px;
+  max-width:70%;
+}
+
+.cliente{
+  background:#2563eb;
+  margin-left:auto;
+}
+
+.admin{
+  background:#1e293b;
+}
+
+/* INPUT */
+.chat-input{
+  display:flex;
+  padding:10px;
+}
+
+.chat-input input{
+  flex:1;
   padding:10px;
   border:none;
   border-radius:10px;
-  background:#1e6cff;
 }
 
-/* CARRINHO */
-.carrinho{
-  position:fixed;
-  right:-100%;
-  top:0;
-  width:100%;
-  height:100%;
-  background:#05070d;
-  padding:20px;
-  transition:0.3s;
+.chat-input button{
+  margin-left:10px;
+  background:#2563eb;
+  border:none;
+  color:white;
+  padding:10px;
+  border-radius:10px;
 }
-
-.carrinho.active{
-  right:0;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="icon" onclick="abrirMenu()">☰</div>
-  <div class="logo">WZK</div>
-  <div>
-    <span class="icon" onclick="abrirConta()">👤</span>
-    <span class="icon" onclick="abrirCarrinho()">🛒</span>
-  </div>
+<h2 style="padding:20px;">WZK Store</h2>
+
+<!-- BOTÃO SUPORTE -->
+<div class="support-btn" onclick="abrirChat()">
+🎤
 </div>
 
-<!-- BANNER -->
-<div class="banner">
-  ASSINATURAS 🔥
-</div>
-
-<!-- CATEGORIA -->
-<div class="box">
-  <h3>Navegar por categoria</h3>
-  <select>
-    <option>Assinaturas</option>
-  </select>
-</div>
-
-<!-- PRODUTOS -->
-<div class="grid">
-  <div class="card">
-    <h4>Netflix</h4>
-    <p>R$ 19,90</p>
-    <button onclick="addCarrinho('Netflix')">Comprar</button>
+<!-- CHAT -->
+<div id="chat" class="chat">
+  
+  <div class="chat-header">
+    <strong>Suporte</strong>
+    <span onclick="fecharChat()">✖</span>
   </div>
 
-  <div class="card">
-    <h4>Prime Video</h4>
-    <p>R$ 14,90</p>
-    <button onclick="addCarrinho('Prime Video')">Comprar</button>
+  <div id="mensagens" class="chat-body"></div>
+
+  <div class="chat-input">
+    <input id="msgInput" placeholder="Digite sua mensagem...">
+    <button onclick="enviar()">Enviar</button>
   </div>
-</div>
 
-<!-- WHATSAPP -->
-<div class="whatsapp" onclick="whats()">💬</div>
-
-<!-- MENU -->
-<div class="menu" id="menu">
-  <h2>MENU</h2>
-  <p>Suporte: Online 24/7</p>
-
-  <h3>Categorias</h3>
-  <p>🎬 Assinaturas</p>
-
-  <button onclick="abrirCarrinho()">Ver Carrinho</button>
-</div>
-
-<!-- CONTA -->
-<div class="conta" id="conta">
-  <h3>Samuel</h3>
-  <p>seuemail@gmail.com</p>
-
-  <button onclick="alert('Pedidos')">Meus pedidos</button>
-  <button onclick="alert('Logout')">Sair da conta</button>
-</div>
-
-<!-- CARRINHO -->
-<div class="carrinho" id="carrinho">
-  <h2>Seu carrinho</h2>
-  <div id="lista"></div>
 </div>
 
 <script>
+const supabase = supabase.createClient(
+  "https://pxurrdnkawuibzebmycl.supabase.co/rest/v1/",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4dXJyZG5rYXd1aWJ6ZWJteWNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEwODQ1NjIsImV4cCI6MjEwNjY2MDU2Mn0.DCpH86xZaokfeeVhRlfKu2lt5SBGM15KZYK_HREkN9c"
+);
 
-let carrinho = []
+let conversaId = null;
 
-function abrirMenu(){
-  document.getElementById('menu').classList.toggle('active')
+/* ABRIR CHAT */
+async function abrirChat(){
+  document.getElementById("chat").classList.add("active");
+
+  if(!conversaId){
+    const { data } = await supabase
+      .from("conversas")
+      .insert([{ user_id: "user123" }])
+      .select()
+      .single();
+
+    conversaId = data.id;
+
+    ouvirMensagens();
+  }
 }
 
-function abrirConta(){
-  let c = document.getElementById('conta')
-  c.style.display = c.style.display == 'block' ? 'none' : 'block'
+/* FECHAR */
+function fecharChat(){
+  document.getElementById("chat").classList.remove("active");
 }
 
-function abrirCarrinho(){
-  document.getElementById('carrinho').classList.toggle('active')
+/* ENVIAR */
+async function enviar(){
+  const texto = document.getElementById("msgInput").value;
+
+  if(!texto) return;
+
+  await supabase.from("mensagens").insert([
+    {
+      conversa_id: conversaId,
+      autor: "cliente",
+      mensagem: texto
+    }
+  ]);
+
+  document.getElementById("msgInput").value = "";
 }
 
-function addCarrinho(prod){
-  carrinho.push(prod)
-  renderCarrinho()
+/* RECEBER EM TEMPO REAL */
+function ouvirMensagens(){
+  supabase
+    .channel("chat")
+    .on(
+      "postgres_changes",
+      {
+        event:"INSERT",
+        schema:"public",
+        table:"mensagens",
+        filter:`conversa_id=eq.${conversaId}`
+      },
+      (payload)=>{
+        adicionarMsg(payload.new);
+      }
+    )
+    .subscribe();
 }
 
-function renderCarrinho(){
-  let lista = document.getElementById('lista')
-  lista.innerHTML = ""
+/* MOSTRAR */
+function adicionarMsg(msg){
+  const div = document.createElement("div");
 
-  carrinho.forEach(p=>{
-    lista.innerHTML += `<p>${p}</p>`
-  })
+  div.classList.add("msg");
+  div.classList.add(msg.autor === "cliente" ? "cliente" : "admin");
+
+  div.innerText = msg.mensagem;
+
+  document.getElementById("mensagens").appendChild(div);
 }
-
-function whats(){
-  window.open("https://wa.me/5519999650414")
-}
-
 </script>
 
 </body>
