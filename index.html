@@ -1,9 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+  <meta charset="UTF-8">
   <title>WZK Store</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0a0f2c;
+      color: white;
+    }
+
+    header {
+      background: #0d1b4c;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #00aaff;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .banner {
+      background: linear-gradient(90deg, #001f3f, #0074D9);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .banner h2 {
+      font-size: 30px;
+    }
+
+    .produtos {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #111a3a;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .card button {
+      background: #0074D9;
+      border: none;
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #0d1b4c;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>WZK Store ONLINE 🔥</h1>
+
+<header>
+  <h1>WZK Store</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Produtos</a>
+    <a href="#">Carrinho</a>
+    <a href="#">Login</a>
+  </nav>
+</header>
+
+<div class="banner">
+  <h2>Bem-vindo à WZK Store 🚀</h2>
+  <p>Os melhores produtos com estilo</p>
+</div>
+
+<section class="produtos">
+  <div class="card">
+    <h3>Produto 1</h3>
+    <p>R$ 99,99</p>
+    <button>Comprar</button>
+  </div>
+
+  <div class="card">
+    <h3>Produto 2</h3>
+    <p>R$ 149,99</p>
+    <button>Comprar</button>
+  </div>
+
+  <div class="card">
+    <h3>Produto 3</h3>
+    <p>R$ 79,99</p>
+    <button>Comprar</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 WZK Store</p>
+</footer>
+
 </body>
 </html>
